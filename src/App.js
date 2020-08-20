@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import Clock from './ConceptosPrincipales/Estado-CicloDeVida/clock';
+import Button from './ConceptosPrincipales/ManejadorEventos/button';
+/**
+ * 
+ * @param {*} props Parámetros que recibe el componente de otro componente 
+ */
+const App = ({ saludo, subtitle = 'Soy un subtítulo' }) => {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (    // Sólo pondemos retornar un objeto, por lo que lo metemos entre paréntesis para importarlo como si fuera un objeto
+        <Fragment>
+            <h1> { saludo } </h1>
+            <p> { subtitle } </p>
+            <Clock></Clock>
+            4. Manejador de Eventos: <Button></Button>
+        </Fragment>
+    );
+};
+
+App.propTypes = { // Definición de los tipos de las propiedades del componente
+    saludo: PropTypes.string.isRequired
+}
+
+App.defaultProps = {
+    subtitle: 'Subtitle'
 }
 
 export default App;

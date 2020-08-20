@@ -1,17 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React from 'react'; // Esta librería permite importar las librerías  de React. Entre ellas las que nos permite utlizar JSX (XML en JavaScript)
+import ReactDOM from 'react-dom'; // Librerías que nos permite jugar con el DOM de React para renderizar
+
+import './index.css'; // CSS del componente. Sólo hace falta importarlo para utilizarlo
 import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// Cogemos el elemento donde queremos renderizar el contenido
+const divRoot = document.querySelector('#root');
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+/***
+ *  Renderizamos el contenido
+ * @param 1: contenido a renderizar
+ * @param 2: elemento donde renderizamos
+ */
+ReactDOM.render( <App saludo={ "Hola" } />, divRoot); 
+
