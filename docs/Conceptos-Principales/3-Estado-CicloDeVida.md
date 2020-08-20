@@ -43,6 +43,18 @@ constructor() {
 }
 ```
 
+o con el nuevo Hook useState:
+
+```jsx
+const [count, setCount] = useState(0);
+```
+
+- useState(<initial_value>): valor inicial del estado
+
+- count: variable del estado
+
+- setCount: función que nos permite modificar el estado (igual a setState)
+
 ### **Actualizar los estados**
 
 this.setState((state, props) => {});

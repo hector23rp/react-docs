@@ -7,6 +7,8 @@ export default class Button extends React.Component {
         this.state = {
             isToggle: true
         };
+
+        this.handleButton = this.handleClick.bind(this);
         
     }
 
@@ -18,7 +20,7 @@ export default class Button extends React.Component {
 
     render() {
         return (
-            <button onClick={this.handleClick}>
+            <button onClick={this.handleButton}>
                 {this.state.isToggle ? 'ON' : 'OFF'} 
             </button>
         );
