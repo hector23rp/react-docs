@@ -36,7 +36,7 @@ En el index.html se debe importar la librería React y Babel. Esta última es la
 
 ## Crear una aplicación de React mediante Create-React-App
 
-https://create-react-app.dev/docs/
+https://create-react-app.dev/docs/getting-started
 
 ```bash
 $ npx create-react-app my-app
