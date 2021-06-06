@@ -1,4 +1,4 @@
-# REACT Sandbox
+# REACT Playground
 
 This repository is created in order to improve my knowledge about React framework and keep learning.
 
