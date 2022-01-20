@@ -15,7 +15,13 @@ This repository is created in order to improve my knowledge about React framewor
 5. [Renderizado Condicional](./docs/Conceptos-Principales/5-RenderizadoCondicional.md) 
 6. [Listas y Keys](./docs/Conceptos-Principales/6-Listas-Keys.md) 
 7. [Composición y Herencia](./docs/Conceptos-Principales/7-Composicion-Herencia.md) 
-8. [Pensando en React](https://es.reactjs.org/docs/thinking-in-react.html)  
+8. [Pensando en React](https://es.reactjs.org/docs/thinking-in-react.html)
+
+## React Testing
+
+1. [Instalación](./docs/React-Testing/1-Instalación.md)
+2. [Selectores y Queries. Testear renderizado](./docs/React-Testing/2-Testear-Renderizado.md)
+3. [Fire Events](./docs/React-Testing/3-Fire-Events.md)
 
 ## Importar React y Babel
 
