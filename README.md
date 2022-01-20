@@ -1,10 +1,6 @@
-# REACT Playground
+# React playground
 
-This repository is created in order to improve my knowledge about React framework and keep learning.
-
-## Requirements
-
-- NodeJS
+Repositorio sobre React con ejemplos
 
 ## Conceptos Básicos
 
@@ -45,7 +41,7 @@ En el index.html se debe importar la librería React y Babel. Esta última es la
 https://create-react-app.dev/docs/getting-started
 
 ```bash
-$ npx create-react-app my-app
+npx create-react-app my-app
 ```
 
 ## Scripts de Create React App
