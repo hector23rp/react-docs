@@ -2,37 +2,86 @@
 
 ## Creación de test de un componente React
 
-Por ejemplo, vamos a testear el siguiente componente de React:
+Para empezar a testear, vamos a utilizar como ejemplo un componente "semáforo" que pintará un mensaje por pantalla con la acción a realizar dependiendo del color que tenga en ese momento. Si el semáforo está en rojo, pintará "esperar" por pantalla. Si el semáforo está en verde, pintará "cruzar" por pantalla.
+
+**Semaforo.js**
 
 ```jsx
-import React from react
-
-const Component = () => {
-  return <p>Hello</p>
-}
-
-export default Component
-```
-
-Importamos los siguientes módulos:
-
-```tsx
 import React from "react";
-import "@testing-library/jest-dom/extend-expect";
-import { render } from "@testing-library/react";
 
-import Component from "./Component"; // Importamos el componente que queremos testear
+const Semaforo = ({ color }) => {
+  const estados = {
+    rojo: "esperar",
+    verde: "cruzar",
+  };
+  return <p>{estados[color]}</p>;
+};
+
+export default Semaforo;
 ```
 
-Aquí también importaríamos el módulo que quisiéramos testear.
-El método render renderiza el componente y permite testear si el componente se ha renderizado o no.
+Ahora vamos a crear el fichero de test que vamos a utilizar para testear el componente semáforo.
 
-Ahora hacemos el test:
+Primero importamos los siguientes módulos:
+
+**Semaforo.test.js**
+
+```jsx
+import React from "react";
+import { render } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
+
+import Semaforo from "./Semaforo";
+```
+
+- Importamos la librería React ya que vamos a utilizar componentes React y lenguaje jsx.
+- Importamos el método **render** de la librería @testing-library/react. Este método permite renderizar el componente en un árbol DOM, el cual utilizaremos para testear nuestro componente y simular su comportamiento. Por defecto, este método crea un elemente **div** en el **document.body** para que sirva de contenedor al componente.
+- Importamos el módulo **@testing-library/jest-dom/extend-expect**. Este módulo permite extender los métodos la librería jest. Agrega métodos como **toBeInTheDocument**, **toBeEnabled**, etc. Utilizaremos algunos de estos métodos en el ejemplo. Para ver la lista completa de los métodos disponibles: [aquí](https://github.com/testing-library/jest-dom)
+
+Una vez configurado el entorno para realizar los test, vamos a ver un ejemplo de cómo se renderiza un componente:
 
 ```js
-test("renders content", () => {
-  const component = render(<Component />);
+test("Semaforo example", () => {
+  const renderer = render(<Semaforo color="rojo" />);
 });
+```
+
+Le pasamos el componente Semaforo al método render para renderizar el componente. Este método nos devuelve un objeto que nos permite acceder al DOM generado y a los diferentes métodos de jest para realizar las diferentes comprobaciones.
+
+Si ejecutamos el método **debug** de jest, podemos ver el DOM que se ha generado:
+
+```js
+test("Semaforo example", () => {
+  const renderer = render(<Semaforo color="rojo" />);
+  renderer.debug();
+});
+```
+
+Salida
+
+```html
+<body>
+  <div>
+    <p>esperar</p>
+  </div>
+</body>
+```
+
+Como se explicó anteriormente, jest genera por defecto el componente dentro de un elemento div en el body del documento. En el caso que quisiéramos cambiar dicho contenedor, podemos especifiarlo mediante la propiedad **conatiner**:
+
+```js
+const article = document.createElement("article");
+const renderer = render(<Semaforo color="rojo" />, {
+  container: document.body.appendChild(article),
+});
+```
+
+Salida
+
+```html
+<article>
+  <p>esperar</p>
+</article>
 ```
 
 ## Comprobar que el componentes se renderiza correctamente (Selectores o Queries)
@@ -46,16 +95,16 @@ Las diferentes queries que se pueden utilizar y su descripción se pueden encont
 Mediante la query `getByText` del objeto que devuelve render, podemos comprobar que el componente se renderiza de forma correcta comprobando si el texto que contiene (en el caso que lo tuviera) es el esperado.
 
 ```js
-test("renders content", () => {
-  const component = render(<Component />);
-  component.getByText("Hola");
+test("getByText example", () => {
+  const renderer = render(<Semaforo color='rojo' />)
+  expect(renderer.getByText('esperar')).toBeInTheDocument()
 });
 ```
 
 El método `getByText` acepta un `string` como input pero también una `expresión regular`:
 
 ```js
-component.getByText(/Hola/);
+component.getByText(/esperar/);
 ```
 
 ### `getByRole`
